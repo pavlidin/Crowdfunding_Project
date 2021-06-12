@@ -182,7 +182,7 @@ function doUpdateProject(projectId) {
         processData: false,
         success: function (data, textStatus, jQxhr) {
             alert("The project has been successfully updated!");
-            window.open("/Project/SingleProject/" + projectId, "_self")
+            window.open("/Project/GetMyProjects/", "_self")
 
         },
         error: function (jqXhr, textStatus, errorThrown) {
