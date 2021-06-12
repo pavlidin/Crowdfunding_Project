@@ -1,5 +1,5 @@
-﻿@using CrowdFundingCore.Models
-@model CrowdFundingCore.Models.Project
+﻿@using CrowdFundingMVC.Models
+@model CrowdFundingMVC.Models.Project
 @{
     ViewData["Title"] = "New Project";
 }
@@ -59,8 +59,8 @@
                     <div class="dropdown">
                         @Html.DropDownListFor(model => model.ProjectCategory,
                                       new SelectList(Enum.GetValues(
-                        typeof(CrowdFundingCore.Models.ProjectCategory))
-                        .Cast<CrowdFundingCore.Models.ProjectCategory>()),
+                        typeof(CrowdFundingMVC.Models.ProjectCategory))
+                        .Cast<CrowdFundingMVC.Models.ProjectCategory>()),
                                      "-- Please Select --")
                         <div>
                             @Html.ValidationMessageFor(m => m.ProjectCategory)

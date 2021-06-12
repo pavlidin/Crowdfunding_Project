@@ -1,4 +1,4 @@
-﻿using CrowdFundingCore.Models;
+﻿using CrowdFundingMVC.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using CrowdFundingCore.Database;
+using CrowdFundingMVC.Database;
 
 namespace CrowdFundingMVC.Areas.Identity.Pages.Account
 {

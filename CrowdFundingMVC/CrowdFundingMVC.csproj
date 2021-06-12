@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CrowdFundingCore\CrowdFundingCore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\assets\" />
     <Folder Include="wwwroot\uploads\" />

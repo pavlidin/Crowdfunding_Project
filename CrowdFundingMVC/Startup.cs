@@ -1,16 +1,14 @@
-using CrowdFundingCore.Database;
-using CrowdFundingCore.Models;
-using CrowdFundingCore.Services;
-using CrowdFundingCore.Services.Interfaces;
+using CrowdFundingMVC.Database;
+using CrowdFundingMVC.Models;
+using CrowdFundingMVC.Services;
+using CrowdFundingMVC.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace CrowdFundingMVC
@@ -89,9 +87,6 @@ namespace CrowdFundingMVC
             app.UseCors("AllowAllOriginsHeadersAndMethods");
             app.UseAuthentication();
             app.UseAuthorization();
-
-           
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
@@ -99,8 +94,6 @@ namespace CrowdFundingMVC
                     name: "default",
                     pattern: "{controller=Project}/{action=GetAllProjects}/{id?}");
             });
-
-            
         }
     }
 }

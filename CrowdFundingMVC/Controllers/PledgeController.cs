@@ -1,6 +1,6 @@
-﻿using CrowdFundingCore.Database;
-using CrowdFundingCore.Models.Options;
-using CrowdFundingCore.Services.Interfaces;
+﻿using CrowdFundingMVC.Database;
+using CrowdFundingMVC.Models.Options;
+using CrowdFundingMVC.Services.Interfaces;
 using CrowdFundingMVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

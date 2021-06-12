@@ -1,4 +1,4 @@
-﻿using CrowdFundingCore.Models;
+﻿using CrowdFundingMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

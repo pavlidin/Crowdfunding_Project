@@ -1,4 +1,4 @@
-﻿using CrowdFundingCore.Models;
+﻿using CrowdFundingMVC.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

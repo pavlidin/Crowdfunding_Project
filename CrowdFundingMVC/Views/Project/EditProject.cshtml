@@ -1,4 +1,4 @@
-﻿@model CrowdFundingCore.Models.Project
+﻿@model CrowdFundingMVC.Models.Project
 
 
 @{
@@ -66,8 +66,8 @@
                     <select name="@Model.ProjectCategory" class="form-control" id="ProjectCategory">
                         @{
                             var categories = Enum.GetValues(
-                                typeof(CrowdFundingCore.Models.ProjectCategory))
-                                .Cast<CrowdFundingCore.Models.ProjectCategory>();
+                                typeof(CrowdFundingMVC.Models.ProjectCategory))
+                                .Cast<CrowdFundingMVC.Models.ProjectCategory>();
                             <option value="@Model.ProjectCategory.ToString()" selected>@Model.ProjectCategory.ToString()</option>
                             foreach (var category in categories)
                             {
