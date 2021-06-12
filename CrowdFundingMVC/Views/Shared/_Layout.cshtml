@@ -3,7 +3,7 @@
 @using CrowdFundingMVC.Models
 @inject Microsoft.AspNetCore.Identity.SignInManager<CrowdFundingMVC.Models.MyUsers> signInManager;
 @inject UserManager<MyUsers> UserManager
-<html lang="en">
+<html lang="en" style="min-width: 500px;">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,19 +74,9 @@
                                asp-action="ListRoles">Manage Roles</a>
                             <div class="dropdown-divider"></div>
                         }
-                        @*<li class="nav-item">
-                                <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-                            </li>*@
                         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button id="logout" type="submit" class="dropdown-item">Logout</button>
-                            @*<a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a>*@
                         </form>
-
-
-
-
-
-
                     </div>
                 </div>
             }
@@ -99,41 +89,19 @@
         </main>
     </div>
 
-    <!-- Footer -->
-    @*<footer class="footer font-small navbar-dark bg-dark">
-
-
-            <div class="container text-center py-3 text-white">
-                © 2020 Copyright:
-                <a href="https://google.gr/"> Google.gr</a>
-            </div>
-
-
-        </footer>*@
-
     <footer class="border-top footer text-muted navbar-dark bg-dark">
         <div class="container text-center py-3 text-white">
             &copy; 2020 -<a asp-area="" asp-controller="Home" asp-action="Index">Crowdfunding App</a>
             <a href="https://github.com/pavlidin" target="_blank" class="btn btn-outline-primary">
                 <i class="fab fa-github-square"></i>
-                pavlidin GitHub
+                pavlidin
             </a>
-            <a href="https://github.com/antogkou target="_blank" class="btn btn-outline-success">
+            <a href="https://github.com/antogkou" target="_blank" class="btn btn-outline-success">
                 <i class="fab fa-github-square"></i>
-                antogkou GitHub
+                antogkou
             </a>
         </div>
-
     </footer>
-
-
-    @*<div style="bottom:0;position: fixed; width:100%;">
-            <hr style="width:100%;" />
-            <footer>
-                <p>&copy; @DateTime.Now.Year</p>
-            </footer>
-        </div>*@
-    <!-- Footer -->
 
     <script src="~/js/sorttable.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
