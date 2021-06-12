@@ -1,5 +1,4 @@
-﻿@using CrowdFundingMVC.Models
-@model CrowdFundingMVC.ViewModels.ProjectCategoryViewModel
+﻿@model CrowdFundingMVC.ViewModels.ProjectCategoryViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -28,7 +27,6 @@
         @foreach (var item in Model.Projects)
         {
             <div class="card" style="width: 18rem;">
-
                 <img class="card-img-top" src="https://www.publichealthnotes.com/wp-content/uploads/2020/03/project-planning-header@2x.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"> @Html.DisplayFor(modelItem => item.ProjectTitle)</h5>
@@ -47,47 +45,3 @@
         }
     </div>
 </div>
-
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Projects[0].ProjectTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Projects[0].ProjectCreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Projects[0].ProjectCategory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Projects[0].ProjectTargetAmount)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Projects)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectCreationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectCategory)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectTargetAmount)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
-                    <a asp-action="SingleProject" asp-route-id="@item.ProjectId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>*@
