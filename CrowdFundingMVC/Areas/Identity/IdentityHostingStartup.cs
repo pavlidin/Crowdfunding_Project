@@ -1,5 +1,4 @@
 ﻿using CrowdFundingMVC.Database;
-using CrowdFundingMVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -16,21 +15,17 @@ namespace CrowdFundingMVC.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<CrFrDbContext>(options =>
-                    options.UseSqlServer(
+                    options.UseNpgsql(
                         context.Configuration.GetConnectionString("CrFrDbContextConnection")));
 
                 services.AddMvc(options =>
                 {
-                    
                     var policy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
                     options.Filters.Add(new AuthorizeFilter(policy));
 
                 }).AddXmlDataContractSerializerFormatters();
-
-
-
             });
         }
     }

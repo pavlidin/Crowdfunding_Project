@@ -33,7 +33,7 @@ namespace CrowdFundingMVC
             });
 
             services.AddDbContext<CrFrDbContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
+           options.UseNpgsql(Configuration.GetConnectionString("connectionString")));
 
             services.AddDefaultIdentity<MyUsers>(options => options.SignIn.RequireConfirmedAccount = false)
                  .AddRoles<IdentityRole>()
@@ -45,7 +45,7 @@ namespace CrowdFundingMVC
             services.AddHttpContextAccessor();
 
 
-            services.AddDbContext<CrFrDbContext>(options => options.UseSqlServer(CrFrDbContext.connectionString));
+            services.AddDbContext<CrFrDbContext>(options => options.UseNpgsql(CrFrDbContext.connectionString));
             services.AddScoped<IProjectServices, ProjectServices>();
             services.AddScoped<IPledgeServices, PledgeServices>();
             services.AddScoped<IPostServices, PostServices>();

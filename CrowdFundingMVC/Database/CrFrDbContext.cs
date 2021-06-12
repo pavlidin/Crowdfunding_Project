@@ -7,10 +7,11 @@ namespace CrowdFundingMVC.Database
     public class CrFrDbContext : IdentityDbContext<MyUsers>
     {
         public readonly static string connectionString =
-            "Server=localhost;Database=identityDB;User id=sa;Password=Admin123!;MultipleActiveResultSets=true";
+            "Server=dumbo.db.elephantsql.com;Port=5432;Database=fwrsptid;Userid=fwrsptid;Password=BecRkZXYFGa1PM842Edd2M_3wbeyYYmL;";
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("public");
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<MyUsers>(b =>
@@ -115,7 +116,8 @@ namespace CrowdFundingMVC.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseNpgsql(connectionString, options => options.SetPostgresVersion(9,6));
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }
