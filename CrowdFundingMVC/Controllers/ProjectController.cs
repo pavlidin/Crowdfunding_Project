@@ -214,5 +214,14 @@ namespace CrowdFundingMVC.Controllers
             }
             return Json(result.Data);
         }
+
+        [Authorize(Roles = "Administrator, Backer, Project Creator")]
+        [HttpDelete]
+        public bool DeleteProject([FromBody] ProjectOptions projectOptions)
+        {
+            if (projectOptions != null)
+                return _projectservices.DeleteProject(projectOptions.ProjectId);
+            return false;
+        }
     }
 }

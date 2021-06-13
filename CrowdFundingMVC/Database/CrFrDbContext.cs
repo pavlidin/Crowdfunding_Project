@@ -64,6 +64,12 @@ namespace CrowdFundingMVC.Database
             // Create Media table
             modelBuilder
                 .Entity<Multimedia>()
+                .HasOne(p => p.Project)
+                .WithMany(p => p.ProjectMultimedia)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder
+                .Entity<Multimedia>()
                 .ToTable("Multimedia");
 
             modelBuilder
@@ -94,6 +100,12 @@ namespace CrowdFundingMVC.Database
 
 
             // Post table
+            modelBuilder
+                .Entity<Post>()
+                .HasOne(p => p.Project)
+                .WithMany(p => p.ProjectPosts)
+                .OnDelete(DeleteBehavior.Cascade);
+                
             modelBuilder
                 .Entity<Post>()
                 .ToTable("Post");

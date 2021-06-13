@@ -51,14 +51,6 @@ namespace CrowdFundingMVC.Services
             userName = userName.Substring(0, userName.IndexOf('@'));
             string userId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            //am i sure?
-            //if (string.IsNullOrWhiteSpace(projectoption.MultimediaURL))
-            //{
-            //    return Result<Project>.CreateFailed(
-            //        StatusCode.BadRequest, "Null or empty Multimedia URL");
-            //}
-
-
             var project = new Project()
             {
                 UserId = userId,
@@ -225,15 +217,6 @@ namespace CrowdFundingMVC.Services
             return query;
         }
 
-        //Find A Project By ID
-        //public Project FindProjectById(int id)
-        //{
-        //    string userId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-        //    return _db.Set<Project>()
-        //        .Find(id);
-        //}
-
         public Result<Project> GetProjectById(int id)
         {
             var project = _db.Set<Project>()
@@ -348,10 +331,6 @@ namespace CrowdFundingMVC.Services
 
         public IQueryable<Project> GetAllActiveProjects(string projectCategory, string searchString)
         {
-
-            //var projects = from m in _db.Set<Project>()
-            //             select m;
-
             var projects = _db.Set<Project>()
                 .Where(p => p.IsActive == true)
                 .Where(p => p.IsComplete == false)
@@ -436,7 +415,7 @@ namespace CrowdFundingMVC.Services
                 project.ProjectCategory = options.ProjectCategory;
             if (project.ProjectTargetAmount != 0)
                 project.ProjectTargetAmount = options.ProjectTargetAmount;
-            //if (options.ProjectEndingDate != null)
+
             project.ProjectEndingDate = options.ProjectEndingDate;
 
             project.IsActive = options.IsActive;
@@ -462,6 +441,23 @@ namespace CrowdFundingMVC.Services
             }
 
             return Result<Project>.CreateSuccessful(project);
+        }
+
+        public bool DeleteProject(int projectId)
+        {
+            string userId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Project project = _db.Set<Project>()
+                .Where(p => p.UserId == userId)
+                .Where(p => p.ProjectId == projectId)
+                .SingleOrDefault();
+
+             if (project != null)
+            {
+                _db.Set<Project>().Remove(project);
+                _db.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

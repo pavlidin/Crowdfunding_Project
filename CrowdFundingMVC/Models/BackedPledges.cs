@@ -18,5 +18,4 @@ namespace CrowdFundingMVC.Models
             created_BackedPledge = DateTimeOffset.Now;
         }
     }
-
 }

@@ -231,8 +231,6 @@
                 </div>
             }
             <div>
-                @*<a>Updates: <span class="badge">@Model.Posts.Count()</span></a>*@
-                @*<h5>Total Updates: @Model.Posts.Count()</h5>*@
                 <h6 class="border-bottom border-gray pb-2 mb-0 text-center font-weight-bold">Recent updates <span class="w3-badge w3-green">@Model.Posts.Count()</span></h6>
                 @foreach (var item in Model.Posts.OrderByDescending(c => c.PostDateCreated).ToList())
                 {
@@ -246,7 +244,6 @@
 && item.UserId != null)
                         {
                             <small class="d-block text-right mt-0">
-                                @*<a href="Url.Action("EditPost", new { id = item.PostId})">Edit</a>*@
                                 <button type="button" class="btn btn-primary btn-sm mr-1" onclick="editPost(@Model.Project.ProjectId , @item.PostId)">Edit</button>
                             </small>
                             <small class="d-block text-right mt-0">

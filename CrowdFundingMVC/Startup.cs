@@ -51,7 +51,6 @@ namespace CrowdFundingMVC
             services.AddScoped<IPostServices, PostServices>();
             services.AddScoped<IMultimediaServices, MultimediaServices>();
             services.AddScoped<IFundServices, FundServices>();
-            //services.AddTransient<IProjectManager, ProjectManagement>();
 
             services.AddCors(options =>
             {
@@ -81,7 +80,6 @@ namespace CrowdFundingMVC
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-          //  app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors("AllowAllOriginsHeadersAndMethods");

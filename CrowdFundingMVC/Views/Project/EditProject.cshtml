@@ -17,6 +17,7 @@
 
             <div class="form-group">
                 <label asp-for="@Model.ProjectTitle" class="control-label">Project Title</label>
+                <button type="button" class="btn btn-danger btn-sm float-right" onclick="deleteProject(@Model.ProjectId)">Delete Project</button>
                 <input asp-for="@Model.ProjectTitle" class="form-control" id="ProjectTitle"
                        required data-val="true" data-val-required="Project Title is required" />
                 @Html.ValidationMessageFor(m => m.ProjectTitle)

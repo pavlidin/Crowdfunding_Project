@@ -20,6 +20,6 @@ namespace CrowdFundingMVC.Services.Interfaces
         IQueryable<Project> GetTrendingProjects();
         IQueryable<Project> GetCompletedProjects();
         IQueryable<Project> GetMyBackedProjects();
-        //Project FindProjectByIdz(int projectId);
+        bool DeleteProject(int projectId);
     }
 }

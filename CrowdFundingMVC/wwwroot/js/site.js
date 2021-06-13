@@ -295,6 +295,34 @@ function deletePost(postId) {
 
 }
 
+function deleteProject(projectId) {
+    if (confirm("Are you sure you want to delete this project?")) {
+        actionMethod = "DELETE"
+        actionUrl = "/project/DeleteProject"
+        sendData = { "ProjectId": projectId }
+        $.ajax({
+            url: actionUrl,
+            dataType: 'html',
+            type: actionMethod,
+            data: JSON.stringify(sendData),
+
+            contentType: 'application/json',
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                window.open("/Project/GetMyProjects/", "_self")
+
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    }
+    else {
+        return false;
+    }
+
+}
+
 function deletePledge(pledgeId) {
 
     if (confirm("Are you sure you want to delete this pledge?")) {
