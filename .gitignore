@@ -349,3 +349,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /CrowdFundingMVC/Migrations/
+/CrowdFundingMVC/wwwroot/uploads/!logo.png
+/CrowdFundingMVC/wwwroot/uploads/
