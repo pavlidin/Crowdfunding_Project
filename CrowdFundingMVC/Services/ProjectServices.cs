@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.IO;
+using System;
 using CrowdFundingMVC.Database;
 using CrowdFundingMVC.Models;
 using CrowdFundingMVC.Models.Options;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CrowdFundingMVC.Services
 {
@@ -51,6 +53,11 @@ namespace CrowdFundingMVC.Services
             userName = userName.Substring(0, userName.IndexOf('@'));
             string userId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+            byte[] CoverImageBytes = null;
+            BinaryReader reader = new BinaryReader(projectoption.MultimediaURL.OpenReadStream());
+            CoverImageBytes = reader.ReadBytes((int)projectoption.MultimediaURL.Length);
+            string b64_image = Convert.ToBase64String(CoverImageBytes);
+
             var project = new Project()
             {
                 UserId = userId,
@@ -67,7 +74,7 @@ namespace CrowdFundingMVC.Services
                     new Multimedia
                     {
                         MultimediaTypes = projectoption.MultimediaTypes,
-                        MultimediaURL = projectoption.FilePath
+                        MultimediaURL = b64_image
                     },
                 },
 
