@@ -75,8 +75,7 @@ namespace CrowdFundingMVC.Database
             modelBuilder
                 .Entity<Multimedia>()
                 .Property(m => m.MultimediaURL)
-                .IsRequired()
-                .HasMaxLength(255);
+                .IsRequired();
 
             // Create Pledge table
             modelBuilder
