@@ -17,8 +17,6 @@ namespace CrowdFundingMVC.Models
 
         public string user_Phone { get; set; }
 
-        public string user_VAT { get; set; }
-
         public ICollection<Project> UserCreatedProjects { get; set; }
 
         public DateTimeOffset UserDateCreated { get; set; }

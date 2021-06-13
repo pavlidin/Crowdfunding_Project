@@ -85,6 +85,12 @@ namespace CrowdFundingMVC.Database
 
             modelBuilder
                 .Entity<Pledge>()
+                .HasOne(p => p.Project)
+                .WithMany(p => p.ProjectPledges)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder
+                .Entity<Pledge>()
                 .Property(i => i.PledgePrice)
                 .IsRequired()
                 .HasMaxLength(20);
@@ -109,6 +115,13 @@ namespace CrowdFundingMVC.Database
             modelBuilder
                 .Entity<Post>()
                 .ToTable("Post");
+
+            modelBuilder
+                .Entity<Fund>()
+                .HasOne(p => p.Project)
+                .WithMany(p => p.Funds)
+                .OnDelete(DeleteBehavior.Cascade);
+                
 
             modelBuilder
                 .Entity<Fund>()

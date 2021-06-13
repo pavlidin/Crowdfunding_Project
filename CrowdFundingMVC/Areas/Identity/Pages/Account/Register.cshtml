@@ -23,11 +23,6 @@
                 <span asp-validation-for="Input.user_LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Input.user_VAT"></label>
-                <input type="text"  pattern="/^-?\d+\.?\d*$/" minlength="9" onKeyPress="if(this.value.length==9) return false;" asp-for="Input.user_VAT" class="form-control" />
-                <span asp-validation-for="Input.user_VAT" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Input.Email"></label>
                 <input asp-for="Input.Email" class="form-control" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>

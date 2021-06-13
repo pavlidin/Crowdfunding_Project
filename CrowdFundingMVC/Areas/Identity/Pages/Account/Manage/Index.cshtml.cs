@@ -34,12 +34,6 @@ namespace CrowdFundingMVC.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
-            [Range(9, int.MaxValue, ErrorMessage = "Please enter valid VAT Number")]
-            [DataType(DataType.Text)]
-            [Display(Name = "VAT number")]
-            public int user_VAT { get; set; }
-
-            //[Required]
             [DataType(DataType.Text)]
             [Display(Name = "First name")]
             public string userFirstName { get; set; }
@@ -59,7 +53,6 @@ namespace CrowdFundingMVC.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                user_VAT = user.user_VAT,
                 userFirstName = user.userFirstName,
                 userLastName = user.userLastName
             };
@@ -100,10 +93,6 @@ namespace CrowdFundingMVC.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
-            }
-            if (Input.user_VAT != user.user_VAT)
-            {
-                user.user_VAT = Input.user_VAT;
             }
             if (Input.userFirstName != user.userFirstName)
             {

@@ -14,7 +14,8 @@
 
 <main>
     <div class="row justify-content-end">
-        @if (@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Id == @Model.Project.UserId)
+        @if (@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Id == @Model.Project.UserId || 
+        @UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Id =="B22698B8-42A2-4115-9631-1C2D1E2AC5F7")
         {
             <div class="mr-2">
                 <button type="button" class="btn btn-primary"

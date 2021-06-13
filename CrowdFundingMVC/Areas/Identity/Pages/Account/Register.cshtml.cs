@@ -57,12 +57,6 @@ namespace CrowdFundingMVC.Areas.Identity.Pages.Account
             public string user_LastName { get; set; }
 
             [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "VAT Number")]
-            public int user_VAT { get; set; }
-
-
-            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -96,7 +90,6 @@ namespace CrowdFundingMVC.Areas.Identity.Pages.Account
                 {
                     userFirstName = Input.user_FirstName,
                     userLastName = Input.user_LastName,
-                    user_VAT = Input.user_VAT,
                     UserName = Input.Email,
                     Email = Input.Email
                 };
