@@ -43,7 +43,7 @@
                   != null && Model.ProjectMultimedia.Last().MultimediaURL != "")
                             {
                                 <img class="img-fluid single-project-cover"
-                                     src="@Url.Content(Model.ProjectMultimedia.Last().MultimediaURL)"
+                                     src="data:image/png;base64, @Url.Content(Model.ProjectMultimedia.Last().MultimediaURL)"
                                      style="max-width:100%; height:auto; max-height: 350px; min-height: 350px;" />
                             }
                             else
