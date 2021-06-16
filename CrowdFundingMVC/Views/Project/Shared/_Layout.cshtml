@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+@using CrowdFundingMVC.Models
+@inject Microsoft.AspNetCore.Identity.SignInManager<CrowdFundingMVC.Models.MyUsers> signInManager;
+@inject UserManager<MyUsers> UserManager
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CrowdFundingMVC</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    @*<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>*@
+    <script src="~/js/all.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+   
+
+</head>
+<body style="background-color:whitesmoke;">
+    <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Crowdfunding App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="CreateProject">New Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="GetAllProjects">Active Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="GetTrendingProjects">Trending Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="CompletedProjects">Completed Projects</a>
+                </li>
+            </ul>
+
+            <partial name="_LoginPartial.cshtml" />
+
+
+
+            @*<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">*@
+            @*<a class="nav-link btn-warning" style="background-color:white;" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>*@
+            @*<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*@
+            @if (signInManager.IsSignedIn(User))
+            {
+                <div class="btn-group">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dashboard
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" asp-controller="Project"
+                           asp-action="GetMyProjects">My Projects</a>
+                        <a class="dropdown-item" asp-controller="Project"
+                           asp-action="GetMyBackedProjects">My Backed History</a>
+                        <div class="dropdown-divider"></div>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <div class="text-center font-weight-bold">Admin</div>
+                            <a class="dropdown-item" asp-controller="Admin"
+                               asp-action="ListUsers">Manage Users</a>
+                            <a class="dropdown-item" asp-controller="Admin"
+                               asp-action="ListRoles">Manage Roles</a>
+                            <div class="dropdown-divider"></div>
+                        }
+                        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button id="logout" type="submit" class="dropdown-item">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted navbar-dark bg-dark">
+        <div class="container text-center py-3 text-white d-flex flex-sm-row flex-column justify-content-center align-items-center">
+        <div>
+            &copy; 2020 -<a asp-area="" asp-controller="Home" asp-action="Index">Crowdfunding App</a>
+        </div>
+        <div>
+            <a href="https://github.com/pavlidin" target="_blank" class="btn btn-outline-primary">
+                <i class="fab fa-github-square"></i>
+                pavlidin
+            </a>
+            <a href="https://github.com/antogkou" target="_blank" class="btn btn-outline-success">
+                <i class="fab fa-github-square"></i>
+                antogkou
+            </a>
+        </div>
+        </div>
+    </footer>
+
+    <script src="~/js/sorttable.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
